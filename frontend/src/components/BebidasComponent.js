@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getBebidas, createBebida } from '../services/bebidaService';
+import axios from 'axios';
 
 const BebidasComponent = () => {
   const [bebidas, setBebidas] = useState([]);
@@ -16,7 +17,7 @@ const BebidasComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const nuevaBebida = { nombre, precio: parseFloat(precio) }; // Asegúrate de que precio sea un número
+    const nuevaBebida = { nombre, precio: parseFloat(precio) }; 
     console.log('Datos enviados:', nuevaBebida); // Registro de los datos enviados
     try {
       const bebidaCreada = await createBebida(nuevaBebida);
@@ -25,6 +26,7 @@ const BebidasComponent = () => {
       console.error('Error al crear bebida:', error);
     }
   };
+  
 
   return (
     <div>
